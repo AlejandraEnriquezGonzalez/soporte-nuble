@@ -57,6 +57,13 @@ PORT=3000
   * **RN09:** Transición prohibida desde estado `Finalizada` hacia `Pendiente`.
   * **RN10:** Respuestas HTTP 404 (`NotFoundException`) para consultas o modificaciones de identificadores inexistentes.
 
+# Etapa 4: Pruebas y Versión Final
+
+* Integración de documentación OpenAPI/Swagger interactiva disponible en la ruta `/api`.
+* Incorporación de decoradores Swagger (`@ApiProperty`, `@ApiOperation`, `@ApiResponse`, `@ApiQuery`) en DTOs y Controladores.
+* Pruebas funcionales de todas las reglas de negocio e interacción con MySQL.
+* Revisión técnica de código y preparación del repositorio para entrega.
+
 ```
 
 ```
