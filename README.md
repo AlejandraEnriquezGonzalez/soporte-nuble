@@ -29,3 +29,34 @@ DB_PASSWORD=123456
 DB_DATABASE=soporte_nuble_db
 PORT=3000
 ```
+
+
+### Etapa 1: Arquitectura Inicial
+
+* Inicialización del proyecto utilizando NestJS.
+* Estructura modular base creada (`SolicitudesModule`).
+* Implementación inicial de `SolicitudesController` y `SolicitudService`.
+
+### Etapa 2: Persistencia y Validación
+
+* Configuración de la conexión a MySQL con TypeORM y lectura de variables de entorno mediante `@nestjs/config`.
+* Mapeo de la entidad `Solicitud` (`src/solicitudes/entities/solicitud.entity.ts`).
+* Creación de enumeraciones para `Categoria`, `Prioridad` y `Estado`.
+* Definición de `CreateSolicitudDto` y `UpdateSolicitudDto` con decoradores de `class-validator` y `class-transformer`.
+* Habilitación global de `ValidationPipe` y `CORS` en `src/main.ts`.
+
+### Etapa 3: Funcionalidad y Reglas de Negocio
+
+* Implementación de operaciones CRUD completas en controlador y servicio.
+* Desarrollo del endpoint de búsqueda con filtros combinados: `GET /solicitudes/buscar`.
+* Validación e integración de las Reglas de Negocio en la lógica del backend:
+  * **RN01 a RN04 y RN06:** Validados mediante DTOs y `ValidationPipe`.
+  * **RN05:** Asignación automática del estado `Pendiente` en nuevas solicitudes.
+  * **RN07:** Control estricto de fecha de solicitud (no posterior a la actual).
+  * **RN08:** Bloqueo de eliminación para solicitudes en estado `Pendiente` o `En Proceso`.
+  * **RN09:** Transición prohibida desde estado `Finalizada` hacia `Pendiente`.
+  * **RN10:** Respuestas HTTP 404 (`NotFoundException`) para consultas o modificaciones de identificadores inexistentes.
+
+```
+
+```
